@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/marwa1ytb/tp-jenkins-security.git'
+                git branch: 'main', url: 'https://github.com/marwa1ytb/tp-jenkins-security.git'
             }
         }
         stage('Install Dependencies') {
@@ -16,11 +16,11 @@ pipeline {
                 sh 'pytest test_app.py -v'
             }
         }
-      stage('SCA Scan') {
+        stage('SCA Scan') {
             steps {
-              sh 'dependency-check.sh--project "TP-Jenkins"-scan .--format HTML'
+                sh 'dependency-check.sh --project "TP-Jenkins" --scan . --format HTML'
             }
-      }
+        }
     }
     post {
         failure {
