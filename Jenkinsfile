@@ -16,7 +16,7 @@ pipeline {
                 sh 'pytest test_app.py -v'
             }
         }
-      stage(’SCA Scan’) {
+      stage('SCA Scan') {
             steps {
               sh 'dependency-check.sh--project "TP-Jenkins"-scan .--format HTML'
             }
